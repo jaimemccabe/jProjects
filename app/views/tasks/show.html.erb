@@ -20,6 +20,20 @@
   <%= @task.priority %>
 </p>
 
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+</p>
+
+<p>
+  <b>Estimated Time (hrs)</b>
+  <%= @task.estimated_time_in_hours %>
+</p>
+
+<p>
+  <b>Actual Time:</b>
+  <%= @task.actual_time_in_hours %>
+</p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
