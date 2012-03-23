@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314011023) do
+ActiveRecord::Schema.define(:version => 20120323020922) do
+
+  create_table "stories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tasks", :force => true do |t|
     t.string   "title"
@@ -23,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120314011023) do
     t.integer  "status"
     t.integer  "estimated_time_in_hours"
     t.integer  "actual_time_in_hours"
+    t.integer  "story_id"
   end
 
 end
