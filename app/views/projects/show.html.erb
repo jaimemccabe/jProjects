@@ -1,20 +1,15 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @project.name %></h1>
 
-<p>
-  <b>Started on:</b>
-  <%= @project.started_on %>
-</p>
-
-<p>
-  <b>Completed on:</b>
-  <%= @project.completed_on %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<% @project.stories.each do |story| %>
+  <ul>
+    <li><%= story.name %></li>
+    <% story.tasks.each do |task| %>
+      <%= task.title %>
+    <% end %>
+  </ul>
+<% end %>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
+<hr>
