@@ -1,4 +1,6 @@
 JProjects::Application.routes.draw do
+  root to: 'tasks#index'
+
   get "story/show"
 
   get "story/index"
