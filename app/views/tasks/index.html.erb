@@ -10,31 +10,44 @@
 
 <%= link_to 'New Task', new_task_path %>    
 
-<% @tasks.each do |task| %>
-  <ul>
-    <li>Title: <%= task.title %></li>
-    <li>User: <%= task.user_id %></li>
-    <li>Description: <%= task.description %></li>
-    <li>Priority: <%= task.priority %></li>
-    <li>Status: 
-      <% if task.status == 1 %>
-        <%= 'Not Yet Started' %>
-      <% elsif task.status == 2 %>
-        <%= 'In Progress' %>
-      <% elsif task.status == 3 %>
-        <%= 'In Review' %>
-      <% elsif task.status == 4 %>
-        <%= 'Complete' %>
-      <% else %>
-        <%= task.status %>
-      <% end %>
-    </li>
-    <li>Estimated Time (hrs): <%= task.estimated_time_in_hours %></li>
-    <li>Actual Time (hrs): <%= task.actual_time_in_hours %></li>
-    <li><%= link_to 'Edit', edit_task_path(task) %> <%= link_to 'Delete', task, confirm: 'Are you sure?', method: :delete %></li>
-  </ul>
-<% end %>
+<div class="row">
+<div class="span12">
 
+<div class="row">
+<div class="span3">Not Yet Started
+  <% @tasks.each do |task| %>
+    <% if task.status == 1 %>
+      <%= render "task", :task => task %>
+    <% end %>
+
+  <% end %>
+</div>
+<div class="span3">In Progress
+  <% @tasks.each do |task| %>
+    <% if task.status == 2 %>
+      <%= render "task", :task => task %>
+    <% end %>
+
+  <% end %>  
+</div>
+<div class="span3">In Review
+  <% @tasks.each do |task| %>
+    <% if task.status == 3 %>
+      <%= render "task", :task => task %>
+    <% end %>
+
+  <% end %>  
+</div>
+<div class="span3">Complete
+  <% @tasks.each do |task| %>
+    <% if task.status == 4 %>
+      <%= render "task", :task => task %>
+    <% end %>
+
+  <% end %>  
+</div>
+</div>
+</div>
+</div>
 <br />
-
 <%= link_to 'New Task', new_task_path %>

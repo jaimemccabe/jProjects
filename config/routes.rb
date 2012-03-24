@@ -1,4 +1,20 @@
 JProjects::Application.routes.draw do
+  root to: 'tasks#index'
+
+  get "story/show"
+
+  get "story/index"
+
+  get "story/update"
+
+  get "story/destroy"
+
+  get "story/new"
+
+  get "story/create"
+
+  get "story/edit"
+
   resources :tasks
 
   # The priority is based upon order of creation:
