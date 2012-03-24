@@ -1,4 +1,6 @@
 JProjects::Application.routes.draw do
+  resources :stories
+
   resources :projects
 
   root to: 'tasks#index'
