@@ -1,28 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div id="header">
+  <h1>Dynamic Task Manager</h1>
+
+  <h2>Create tasks and track their progress</h2>
+</div>
+
 <h1>Listing tasks</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>User</th>
-    <th>Description</th>
-	<th>Priority</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Task', new_task_path %>    
 
 <% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.title %></td>
-    <td><%= task.user_id %></td>
-    <td><%= task.description %></td>
-    <td><%= task.priority %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <ul>
+    <li>Title: <%= task.title %></li>
+    <li>User: <%= task.user_id %></li>
+    <li>Description: <%= task.description %></li>
+    <li>Priority: <%= task.priority %></li>
+    <li>Status: 
+      <% if task.status == 1 %>
+        <%= 'Not Yet Started' %>
+      <% elsif task.status == 2 %>
+        <%= 'In Progress' %>
+      <% elsif task.status == 3 %>
+        <%= 'In Review' %>
+      <% elsif task.status == 4 %>
+        <%= 'Complete' %>
+      <% else %>
+        <%= task.status %>
+      <% end %>
+    </li>
+    <li>Estimated Time (hrs): <%= task.estimated_time_in_hours %></li>
+    <li>Actual Time (hrs): <%= task.actual_time_in_hours %></li>
+    <li><%= link_to 'Edit', edit_task_path(task) %> <%= link_to 'Delete', task, confirm: 'Are you sure?', method: :delete %></li>
+  </ul>
 <% end %>
-</table>
 
 <br />
 

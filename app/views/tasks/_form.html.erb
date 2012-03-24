@@ -12,21 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id %>
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_field :description %>
+      <%= f.label :description %>
+      <%= f.text_area :description, :size => '50x10' %>
   </div>
   <div class="field">
-      <%= f.label :priority %><br />
+      <%= f.label :priority %>
       <%= f.text_field :priority %>
   </div>
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, [['NYS', 1],['In Progress', 2],['In Review',3], ['Complete', 4]], :size => '' %>
+  </div>
+  <div class="field">
+      <%= f.label :actual_time_in_hours %>
+      <%= f.text_field :actual_time_in_hours %>
+  </div>
+  <div class="field">
+      <%= f.label :estimated_time_in_hours %>
+      <%= f.text_field :estimated_time_in_hours %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
