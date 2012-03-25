@@ -13,13 +13,11 @@ Project.destroy_all
 Project.create name: "Jaime's Project"
 Project.create name: "Kori's Project"
 
-Story.create name: "Read ruby", project_id: Project.first.id
-Story.create name: "Learn Rails", project_id: Project.last.id
+Project.first.stories.create name: "Read ruby"
+Project.last.stories.create name: "Learn Rails"
 
-story_count = Story.count
-first = Story.first.id
-last = Story.last.id
+stories = Story.all
 
-10.times do |t|
-  Task.create title: "Task#{t}", story_id: rand(first..last), status: rand(1..4)
+20.times do |t|
+  stories.shuffle.first.tasks.create title: "Task#{t}", status: rand(1..4)
 end
