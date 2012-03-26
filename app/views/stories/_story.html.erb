@@ -4,34 +4,22 @@
 <div class="row">
 <div class="span3">Not Yet Started
   <% story.tasks.each do |task| %>
-    <% if task.status == 1 %>
-      <%= render task %>
-    <% end %>
-
+    <%= render task if task.not_yet_started? %>
   <% end %>
 </div>
 <div class="span3">In Progress
   <% story.tasks.each do |task| %>
-    <% if task.status == 2 %>
-      <%= render task %>
-    <% end %>
-
+    <%= render task if task.in_progress? %>
   <% end %>  
 </div>
 <div class="span3">In Review
   <% story.tasks.each do |task| %>
-    <% if task.status == 3 %>
-      <%= render task %>
-    <% end %>
-
+    <%= render task if task.in_review? %>
   <% end %>  
 </div>
 <div class="span3">Complete
   <% story.tasks.each do |task| %>
-    <% if task.status == 4 %>
-      <%= render task %>
-    <% end %>
-
+    <%= render task if task.complete? %>
   <% end %>  
 </div>
 </div>
