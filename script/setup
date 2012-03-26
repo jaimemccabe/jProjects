@@ -1,0 +1,9 @@
+#!/bin/sh
+
+gem list -i bundler || gem install bundler && rbenv rehash
+bundle install && rbenv rehash
+
+rake db:create:all db:drop:all db:setup db:seed 
+rake db:test:prepare
+
+touch tmp/restart.txt

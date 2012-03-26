@@ -5,14 +5,13 @@ class ProjectsControllerTest < ActionController::TestCase
     @project = projects(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:projects)
-  end
-
   test "should get new" do
     get :new
+    assert_response :success
+  end
+
+  test "should get index" do
+    get :index
     assert_response :success
   end
 
@@ -25,8 +24,13 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should show project" do
+    @project.stories.create name: "Dog sitting"
+    @project.stories.last.tasks.create title: "Walk dog"
+    
     get :show, id: @project
     assert_response :success
+    assert_select "Dog sitting"
+    assert_select "Walk dog"
   end
 
   test "should get edit" do
@@ -35,8 +39,9 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
-    put :update, id: @project, project: @project.attributes
+    put :update, id: @project.id, project: { name: 'changed' }
     assert_redirected_to project_path(assigns(:project))
+    assert_equal 'changed', @project.reload.name
   end
 
   test "should destroy project" do

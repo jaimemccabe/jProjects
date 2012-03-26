@@ -3,13 +3,31 @@
 
 <% @project.stories.each do |story| %>
   <ul>
-    <li><%= story.name %></li>
-    <% story.tasks.each do |task| %>
-      <%= task.title %> (<%= task.status %>)
-    <% end %>
+    <li>
+      <h3><%= story.name %></h3>
+    </li>
+    <ul>
+      <% story.tasks.each do |task| %>
+        <li><%= link_to task.title, task %> (<%= task.status %>)</li>
+      <% end %>
+    </ul>
   </ul>
 <% end %>
 
 
 
 <hr>
+
+<p id="notice"><%= notice %></p>
+
+<div id="header">
+  <h1>Dynamic Task Manager</h1>
+
+  <h2>Create tasks and track their progress</h2>
+</div>
+
+<h1>Listing tasks</h1>
+
+   
+
+<%= render 'stories/story' %>
