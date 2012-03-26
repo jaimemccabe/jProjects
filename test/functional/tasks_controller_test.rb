@@ -2,9 +2,8 @@ require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase
   setup do
-    @project = Project.create!
-    @story = Story.create! :name => "Kori's story", :project => @project
-    @task = Task.create! :title => "Not blank", :story => @story
+    
+    @task = FactoryGirl.create(:task)
   end
 
   test "should get index" do
@@ -19,11 +18,13 @@ class TasksControllerTest < ActionController::TestCase
   end
 
   test "should create task" do    
+    @story = Story.last
+    
     assert_difference('Task.count') do
       post :create, task: {:title => 'Walk Dog', :story_id => @story.id}
     end
 
-    assert_redirected_to @project
+    assert_redirected_to Project.last
     @task = Task.last
     assert_equal 'Walk Dog', @task.title
     assert_equal @story, @task.story
