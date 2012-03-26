@@ -14,8 +14,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @stories = @project.stories
-    @tasks = @project.tasks
     
 
     respond_to do |format|

@@ -3,33 +3,33 @@
 <h1>Story Title <%= link_to '+', new_task_path %> </h1>
 <div class="row">
 <div class="span3">Not Yet Started
-  <% @tasks.each do |task| %>
+  <% story.tasks.each do |task| %>
     <% if task.status == 1 %>
-      <%= render "tasks/task", :task => task %>
+      <%= render task %>
     <% end %>
 
   <% end %>
 </div>
 <div class="span3">In Progress
-  <% @tasks.each do |task| %>
+  <% story.tasks.each do |task| %>
     <% if task.status == 2 %>
-      <%= render "tasks/task", :task => task %>
+      <%= render task %>
     <% end %>
 
   <% end %>  
 </div>
 <div class="span3">In Review
-  <% @tasks.each do |task| %>
+  <% story.tasks.each do |task| %>
     <% if task.status == 3 %>
-      <%= render "tasks/task", :task => task %>
+      <%= render task %>
     <% end %>
 
   <% end %>  
 </div>
 <div class="span3">Complete
-  <% @tasks.each do |task| %>
+  <% story.tasks.each do |task| %>
     <% if task.status == 4 %>
-      <%= render "tasks/task", :task => task %>
+      <%= render task %>
     <% end %>
 
   <% end %>  
