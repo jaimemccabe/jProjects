@@ -33,9 +33,9 @@
           <a class="brand" href="#">JProjects</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <% links_and_paths = [['Project1', '/path1'],['Project2', '/path2'],["Jaime's Project", '/path3']] %>
-              <% links_and_paths.each do |link, path| %>
-                <li><%= link_to link, path  %></li>
+              <% projects = get_projects %>
+              <% projects.each do |project| %>
+                <li><%= link_to project.name, project %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
