@@ -30,7 +30,7 @@ class TasksControllerTest < ActionController::TestCase
   
   test "shouldn't let you create task without title" do
     assert_no_difference('Task.count') do
-      post :create, task: {:title => '', :story_id => @story.id}
+      post :create, task: FactoryGirl.attributes_for(:task).merge(:title => nil)
     end
     assert_template :new
   end
