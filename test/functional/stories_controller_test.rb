@@ -2,7 +2,8 @@ require 'test_helper'
 
 class StoriesControllerTest < ActionController::TestCase
   setup do
-    @story = stories(:one)
+    @project = Project.create!
+    @story = Story.create! :name => "Count Chocula", :project => @project
   end
 
   test "should get index" do

@@ -1,16 +1,16 @@
 <%= form_for(@task) do |f| %>
+  <%= f.hidden_field :story_id, :value => params[:story_id] %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-    
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -39,7 +39,6 @@
       <%= f.label :estimated_time_in_hours %>
       <%= f.text_field :estimated_time_in_hours %>
   </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>

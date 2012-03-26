@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
+  belongs_to :story
+  has_one :project, :through => :story
 
-belongs_to :story
-
+  validates_presence_of :story, :title
 end
