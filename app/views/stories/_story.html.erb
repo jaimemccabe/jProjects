@@ -1,28 +1,16 @@
-<div class="row">
-<div class="span12">
 <h1>Story Title <%= link_to '+', new_task_path(:story_id => story.id) %> </h1>
-<div class="row">
-<div class="span3">Not Yet Started
-  <% story.tasks.each do |task| %>
-    <%= render task if task.not_yet_started? %>
-  <% end %>
+<div class="span12">
+  <div class="row">
+    <% sorted_stories = Hash[story.tasks.group_by(&:status).sort] %>
+    <% (1..4).each do |status| %>
+      <div class="span3">
+        <%= status_column_text(status) %>
+        <% if sorted_stories[status].present? %>
+          <% sorted_stories[status].each do |task| %>
+            <p><%= link_to task.title, task %></p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<div class="span3">In Progress
-  <% story.tasks.each do |task| %>
-    <%= render task if task.in_progress? %>
-  <% end %>  
-</div>
-<div class="span3">In Review
-  <% story.tasks.each do |task| %>
-    <%= render task if task.in_review? %>
-  <% end %>  
-</div>
-<div class="span3">Complete
-  <% story.tasks.each do |task| %>
-    <%= render task if task.complete? %>
-  <% end %>  
-</div>
-</div>
-</div>
-</div>
-<br />
