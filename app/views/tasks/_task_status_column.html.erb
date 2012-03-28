@@ -1,6 +1,20 @@
 <p><h3><%= status_column_text(status) %></h3></p>
 <% if sorted_stories[status].present? %>
   <% sorted_stories[status].each do |task| %>
-    <p><%= link_to task.title, edit_task_path(task) %></p>
+    <p>
+      <%= link_to('<',
+                  task_path(task, :task => {:status => task.status - 1}),
+                  :method => :put) unless task.status == 1 %>
+
+      <%= link_to task.title,
+                  task_path(task, :task => {:status => 1}),
+                  :method => :put,
+                  :controller => :task %>
+
+      <%= link_to('>',
+                  task_path(task, :task => {:status => task.status + 1}),
+                  :method => :put) unless task.status == 4 %>
+
+    </p>
   <% end %>
 <% end %>
