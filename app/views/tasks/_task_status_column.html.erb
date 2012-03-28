@@ -1,0 +1,6 @@
+<p><h3><%= status_column_text(status) %></h3></p>
+<% if sorted_stories[status].present? %>
+  <% sorted_stories[status].each do |task| %>
+    <p><%= link_to task.title, edit_task_path(task) %></p>
+  <% end %>
+<% end %>

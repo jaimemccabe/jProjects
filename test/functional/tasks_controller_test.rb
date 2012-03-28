@@ -27,14 +27,14 @@ class TasksControllerTest < ActionController::TestCase
     assert_equal 'Walk Dog', @new_task.title
     assert_equal @story, @new_task.story
   end
-  
+
   test "shouldn't let you create task without title" do
     assert_no_difference('Task.count') do
       post :create, task: FactoryGirl.attributes_for(:task).merge(:title => nil)
     end
     assert_template :new
   end
-  
+
 
   test "should show task" do
     get :show, id: @task
@@ -48,7 +48,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test "should update task" do
     put :update, id: @task, task: @task.attributes
-    assert_redirected_to tasks_path
+    assert_redirected_to project_path(@task.project)
   end
 
   test "should destroy task" do

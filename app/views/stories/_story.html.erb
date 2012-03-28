@@ -1,15 +1,10 @@
-<h1>Story Title <%= link_to '+', new_task_path(:story_id => story.id) %> </h1>
+<h2> <%= story.name %> <%= link_to '+', new_task_path(:story_id => story.id) %> </h2>
 <div class="span12">
   <div class="row">
     <% sorted_stories = Hash[story.tasks.group_by(&:status).sort] %>
     <% (1..4).each do |status| %>
       <div class="span3">
-        <p><h3><%= status_column_text(status) %></h3></p>
-        <% if sorted_stories[status].present? %>
-          <% sorted_stories[status].each do |task| %>
-            <p><%= link_to task.title, task %></p>
-          <% end %>
-        <% end %>
+        <%= render 'tasks/task_status_column', :sorted_stories => sorted_stories, :status => status %>
       </div>
     <% end %>
   </div>
