@@ -14,6 +14,7 @@ Project.create name: "Jaime's Project"
 Project.create name: "Kori's Project"
 
 Project.first.stories.create name: "Read ruby"
+Project.first.stories.create name: "Don't get caught"
 Project.last.stories.create name: "Learn Rails"
 
 stories = Story.all
