@@ -3,7 +3,7 @@ JProjects::Application.routes.draw do
 
   resources :projects
 
-  root to: 'tasks#index'
+  root to: 'projects#index'
 
   get "story/show"
 
