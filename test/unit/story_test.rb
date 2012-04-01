@@ -7,7 +7,7 @@ class StoryTest < ActiveSupport::TestCase
     assert !@story.valid?
     assert @story.errors[:project].present?
   end
-  
+
   test "story requires a name" do
     @story = Story.new
     assert !@story.valid?
