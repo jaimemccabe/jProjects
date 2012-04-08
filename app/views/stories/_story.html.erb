@@ -1,4 +1,4 @@
-<h2> <%= story.name %> <%= link_to '+', new_task_path(:story_id => story.id) %> </h2>
+<h2> <%= link_to story.name, story %> <%= link_to '+', new_task_path(:story_id => story.id) %> </h2>
 <div class="span12">
   <div class="row">
     <% sorted_stories = Hash[story.tasks.group_by(&:status).sort] %>
