@@ -1,9 +1,11 @@
 JProjects::Application.routes.draw do
+  get "static_pages/welcome"
+
   resources :projects
   resources :stories
   resources :tasks
 
-  root to: 'projects#index'
+  root to: 'static_pages#welcome'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
