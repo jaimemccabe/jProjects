@@ -1,4 +1,5 @@
-<h2> <%= link_to story.name, story %> <%= link_to '+', new_task_path(:story_id => story.id) %> </h2>
+<h2> <%= link_to story.name, story %> <%= link_to 'Delete Story', story, :method => :delete, :confirm => 'Are you sure?' %> </h2>
+<h3><%= link_to '+', new_task_path(:story_id => story.id) %></h3>
 <div class="span12">
   <div class="row">
     <% sorted_stories = Hash[story.tasks.group_by(&:status).sort] %>

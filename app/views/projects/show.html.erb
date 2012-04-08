@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @project.name %><%= link_to '+', new_story_path(:project_id => @project.id) %></h1>
+<h1><%= @project.name %> <%= link_to 'Delete Project', @project, :method => :delete, :confirm => 'Are you sure?' %></h1>
+<h3><%= link_to '+', new_story_path(:project_id => @project.id) %></h3>
+
 
 <% @project.stories.each do |story| %>
   <%= render story %>
