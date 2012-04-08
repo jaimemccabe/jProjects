@@ -73,10 +73,11 @@ class StoriesController < ApplicationController
   # DELETE /stories/1.json
   def destroy
     @story = Story.find(params[:id])
+    project = @story.project
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to stories_url }
+      format.html { redirect_to project }
       format.json { head :no_content }
     end
   end
