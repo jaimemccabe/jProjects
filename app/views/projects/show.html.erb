@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @project.name %></h1>
+<h1><%= @project.name %><%= link_to '+', new_story_path(:project_id => @project.id) %></h1>
 
 <% @project.stories.each do |story| %>
   <%= render story %>

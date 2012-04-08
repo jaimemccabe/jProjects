@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :project do
     name "Kori's Project"
   end
-  
+
   factory :story do
     project
     name "Dog sitting" 
@@ -12,7 +12,7 @@ FactoryGirl.define do
     project
     name "Dog grooming"
   end
-  
+
   factory :task do
     story
     title "Walk the dog"
@@ -22,7 +22,7 @@ FactoryGirl.define do
     story2
     title "Brush dog"
   end
-  
+
   factory :task3 do
     story2
     title "Shampoo dog"
